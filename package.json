@@ -1,0 +1,44 @@
+{
+  "name": "quizz",
+  "version": "1.0.0",
+  "description": "Quizz de géographie et de culture générale",
+  "scripts": {
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:js": "webpack --mode=production",
+    "scss": "node-sass --watch style/scss -o style/css",
+    "build": "npm run build:types && npm run build:js"
+  },
+  "author": {
+    "name": "Julien B",
+    "email": "julien.boutet.18@gmail.com"
+  },
+  "main": "js/src/main.js",
+  "types": "dist/types/index.d.ts",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "7.7.4",
+    "@babel/plugin-proposal-class-properties": "7.7.4",
+    "@babel/plugin-proposal-object-rest-spread": "7.7.4",
+    "@babel/preset-env": "7.7.4",
+    "@babel/preset-typescript": "7.7.4",
+    "babel-loader": "8.0.6",
+    "css-loader": "^3.3.2",
+    "fork-ts-checker-webpack-plugin": "3.1.1",
+    "typescript": "3.7.2",
+    "webpack": "4.41.2",
+    "webpack-cli": "3.3.10"
+  },
+  "resolutions": {
+    "terser": "3.14.1"
+  },
+  "dependencies": {
+    "@types/jquery": "^3.3.31",
+    "@types/node": "^12.12.21",
+    "jquery": "^3.4.1",
+    "jvectormap-next": "^3.1.0",
+    "node-sass": "^4.13.0",
+    "style-loader": "^1.0.1"
+  }
+}
