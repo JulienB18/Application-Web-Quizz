@@ -3,7 +3,9 @@
 import Geographie from "./geo";
 
 $(document).ready(function () {
-    var x = new Geographie;
-    x.getMap();
-
+    $( "#gen" ).click(function() {
+        $("#container-map-selector").empty();
+        var x = new Geographie;
+        x.getMap();
+    });
 });

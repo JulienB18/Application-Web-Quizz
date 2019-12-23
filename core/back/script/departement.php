@@ -30,7 +30,6 @@ ini_set("display_errors", 1);
         echo "<div>" . $r->numéro . "</div> </br>";
         echo "<div>" . $r->libelle . "</div> </br>";
         echo "<div>" . $r->code . "</div>";
-    }
     foreach($resultat as $r) {
         $return = array($r->numéro, $r->libelle, $r->code);
         echo json_encode($return);

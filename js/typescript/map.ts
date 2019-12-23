@@ -7,7 +7,7 @@ require("../../node_modules/jvectormap-next/jquery-jvectormap.css");
 
 export default class map{
     france_map(mapType : string, notOnlyOne?: boolean){
-        var dep_fr = {
+        var mapParam = {
             map : "",
             regionsSelectable: true,
             regionsSelectableOne: true,
@@ -16,35 +16,47 @@ export default class map{
             },
         };
         if (mapType == "fr_dep"){ 
-            dep_fr.map = "fr_merc";
+            mapParam.map = "fr_merc";
         }
         if (mapType == "fr_reg"){ 
-            dep_fr.map = "fr_regions_2016_merc";
+            mapParam.map = "fr_regions_2016_merc";
         }
         if (notOnlyOne){ 
-            dep_fr.regionsSelectableOne = false
+            mapParam.regionsSelectableOne = false
         }
 
-        $("#container-map-selector").vectorMap(dep_fr);
+        $("#container-map-selector").vectorMap(mapParam);
         var map = $('#container-map-selector').vectorMap('get', 'mapObject');
         return map
     }
 
-    getCodeDepartement(map: any, responseType: string, reponse: string){
+    getResult(map: any, responseType: string, notOnlyOne?: boolean){
         $("#test").click(function () {
-            //console.log(map.getSelectedRegions())
             if(map){
                 var region = map.getSelectedRegions()
                 console.log("region", region)
-                console.log("reponse", reponse)
+                let data = region
+                if(!notOnlyOne){
+                    data = region[0]
+                }
                 $.ajax({
                     type: "POST",
                     url: "core/back/script/departement.php",
-                    data: {d: region[0], t: responseType},
+                    data: {
+                        d: data, 
+                        t: responseType
+                    },
                     success: function(data: string) {
                         $("#result").empty()
-                        if(data)
-                        $("#result").append(data)
+                        if(data){
+                            if(notOnlyOne){
+                                for (var i = 0; i < data.length; i++) {
+                                    $("#result").append(data)
+                                }
+                                
+                            }
+                            $("#result").append(data)
+                        }
                     },
                 });
             }
