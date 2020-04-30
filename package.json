@@ -36,7 +36,7 @@
   "dependencies": {
     "@types/jquery": "^3.3.31",
     "@types/node": "^12.12.21",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "jvectormap-next": "^3.1.0",
     "node-sass": "^4.13.0",
     "style-loader": "^1.0.1"
